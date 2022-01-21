@@ -1,0 +1,147 @@
+{
+	"name": "Dim_Fact_DataFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "target_customer",
+						"type": "DatasetReference"
+					},
+					"name": "DimCustomer"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_status",
+						"type": "DatasetReference"
+					},
+					"name": "DimStatus"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_brand",
+						"type": "DatasetReference"
+					},
+					"name": "DimBrand"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					},
+					"name": "DimDate"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					},
+					"name": "DimSaleAddress"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_sales_object_des_fields",
+						"type": "DatasetReference"
+					},
+					"name": "DimDetails"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_configuration",
+						"type": "DatasetReference"
+					},
+					"name": "DimConfiguration"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					},
+					"name": "DimObject"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					},
+					"name": "DimInstaller"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					},
+					"name": "DimSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_appointment",
+						"type": "DatasetReference"
+					},
+					"name": "DimAppointment"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_address",
+						"type": "DatasetReference"
+					},
+					"name": "DimCustomerAddress"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					},
+					"name": "FactSale"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "Select1"
+				},
+				{
+					"name": "Select2"
+				},
+				{
+					"name": "Select3"
+				},
+				{
+					"name": "Select4"
+				},
+				{
+					"name": "Select5"
+				},
+				{
+					"name": "Select6"
+				},
+				{
+					"name": "Select7"
+				},
+				{
+					"name": "Select8"
+				},
+				{
+					"name": "Select9"
+				},
+				{
+					"name": "Select10"
+				},
+				{
+					"name": "Select11"
+				},
+				{
+					"name": "Select12"
+				},
+				{
+					"name": "Select13"
+				},
+				{
+					"name": "Filter1"
+				}
+			],
+			"script": "source(output(\n\t\tid as string,\n\t\ttitle as string,\n\t\tlanguage as string,\n\t\tcustomer_type as string,\n\t\temail_optin as boolean,\n\t\temail_optin_proof as string,\n\t\tphone_optin as boolean,\n\t\tphone_optin_proof as string,\n\t\tsms_optin as boolean,\n\t\tsms_optin_proof as string,\n\t\tfax_optin as boolean,\n\t\tfax_optin_proof as string,\n\t\tletter_optin as boolean,\n\t\tletter_optin_proof as string,\n\t\tsf_customer_id as string,\n\t\tsf_contact_id as string,\n\t\tsf_individual_id as string,\n\t\tsf_account_id as string,\n\t\tsalutation as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimCustomer\nsource(output(\n\t\tid as string,\n\t\tstatus as string,\n\t\ttimestamp as timestamp,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\tsales_object_id as string,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\treason as string,\n\t\tdescription as string,\n\t\treview_date as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimStatus\nsource(output(\n\t\tid as string,\n\t\tsf_brand_id as string,\n\t\tcountry_code as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimBrand\nsource(output(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tsf_auto_number as string,\n\t\tsf_lead_id as string,\n\t\tsf_opportunity_id as string,\n\t\tinstaller_company_id as string,\n\t\topportunity_end_date as timestamp,\n\t\topportunity_lost_reason as string,\n\t\tdescription_for_stage_reason as string,\n\t\tclose_date as timestamp,\n\t\thigh_urgency as boolean,\n\t\tlead_platform as string,\n\t\tcontract_type as string,\n\t\tlead_source as string,\n\t\troute_to_market as string,\n\t\tweb_source as string,\n\t\taddress_billing as string,\n\t\taddress_construction as string,\n\t\taddress_contact as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\towner_type as string,\n\t\tsearch_field as string,\n\t\tbergner_and_bluma_id as string,\n\t\tdescription as string,\n\t\tinstaller_description as string,\n\t\tdes_classic_id as long,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tbrand_id as string,\n\t\tgas_connection as boolean,\n\t\tneed as string,\n\t\turgency as string,\n\t\tcurrent_status as string,\n\t\tcurrent_status_reason as string,\n\t\tsf_owner_id as string,\n\t\tcall_center_follow_up_date as timestamp,\n\t\tcall_center_follow_up_date_counter as integer,\n\t\texternal_partner_sales_object_id as string,\n\t\tpurchased_from_partner as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimDate\nsource(output(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tsf_auto_number as string,\n\t\tsf_lead_id as string,\n\t\tsf_opportunity_id as string,\n\t\tinstaller_company_id as string,\n\t\topportunity_end_date as timestamp,\n\t\topportunity_lost_reason as string,\n\t\tdescription_for_stage_reason as string,\n\t\tclose_date as timestamp,\n\t\thigh_urgency as boolean,\n\t\tlead_platform as string,\n\t\tcontract_type as string,\n\t\tlead_source as string,\n\t\troute_to_market as string,\n\t\tweb_source as string,\n\t\taddress_billing as string,\n\t\taddress_construction as string,\n\t\taddress_contact as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\towner_type as string,\n\t\tsearch_field as string,\n\t\tbergner_and_bluma_id as string,\n\t\tdescription as string,\n\t\tinstaller_description as string,\n\t\tdes_classic_id as long,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tbrand_id as string,\n\t\tgas_connection as boolean,\n\t\tneed as string,\n\t\turgency as string,\n\t\tcurrent_status as string,\n\t\tcurrent_status_reason as string,\n\t\tsf_owner_id as string,\n\t\tcall_center_follow_up_date as timestamp,\n\t\tcall_center_follow_up_date_counter as integer,\n\t\texternal_partner_sales_object_id as string,\n\t\tpurchased_from_partner as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimSaleAddress\nsource(output(\n\t\tsales_object_id as string,\n\t\tfollow_up_priority as integer,\n\t\thandover_to_installer as timestamp,\n\t\thas_offer as boolean,\n\t\thas_proposal as boolean,\n\t\thas_signature as boolean,\n\t\tlocale as string,\n\t\torder_origin as string,\n\t\torigin as string,\n\t\tsubsidy_service_active as boolean,\n\t\twarranty_active_from as timestamp,\n\t\tbivalent_point as decimal(0,0),\n\t\telectricity_provider as string,\n\t\tenergy_provider as string,\n\t\tflow_temperature as decimal(0,0),\n\t\theating_system_type_old_system as string,\n\t\thydraulic_check as string,\n\t\tinstallation_year_old_heating_system as integer,\n\t\tmainly_panel_heating as boolean,\n\t\toperating_mode as string,\n\t\treturn_flow_temperature as decimal(0,0),\n\t\tservice_ordered as timestamp,\n\t\tsubsidy_conduction as string,\n\t\tadditional_properties as string,\n\t\tcall_approval as timestamp,\n\t\tcustomer_dispense_right_of_withdrawal as boolean,\n\t\tdata_sharing_approval as string,\n\t\tlatest_installation_date as timestamp,\n\t\tpriority as boolean,\n\t\tsolar_id as string,\n\t\tsystem as string,\n\t\tvisit_call_approval as string,\n\t\tcountry_code as string,\n\t\tinspection_appointment as timestamp,\n\t\tinstallation_appointment as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimDetails\nsource(output(\n\t\tid as string,\n\t\tsales_object_id as string,\n\t\tsource as string,\n\t\thouse_type as string,\n\t\tbuilding_year as string,\n\t\tconstruction_type as string,\n\t\tcurrent_heating_type as string,\n\t\tfuture_heating_type as string,\n\t\thouse_size as integer,\n\t\tisolation_type as string,\n\t\twater_heating_type as string,\n\t\tnumber_of_units as integer,\n\t\tenergy_type as string,\n\t\tcollector_type as string,\n\t\tdrain_condensate as string,\n\t\texhaust_laying as string,\n\t\texhaust_type as string,\n\t\tfloors as string,\n\t\tfunding_kfw as boolean,\n\t\troof_type as string,\n\t\tsolar_energy as boolean,\n\t\tterms_conditions_approval as string,\n\t\tcredit_check_approval as string,\n\t\trevocation_exclusion as string,\n\t\tradiator_count as integer,\n\t\tcirculation as string,\n\t\twarm_water_need as string,\n\t\troof_color as string,\n\t\tobject_type as string,\n\t\tdhw_usage as string,\n\t\tdhw_usage_simultaneous as string,\n\t\tyounger_than_10_years as string,\n\t\tmore_than_1_circuit as string,\n\t\tflue_system as string,\n\t\tcleaning as string,\n\t\tcondense as string,\n\t\tfsb_replacement as string,\n\t\tlegal_kit as string,\n\t\tadditional_expansion_vessel as string,\n\t\tmagnetic_filter as string,\n\t\twater_treatment as string,\n\t\tcurrent_energy_type as string,\n\t\tcircuit_count as integer,\n\t\tsolar_preference as string,\n\t\texpenditures as decimal(0,0),\n\t\texpenditures_reason as string,\n\t\tfive_plus_warranty as string,\n\t\teco_heat_pipe_length as string,\n\t\teco_heat_breakthrough as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\tcreated_by as string,\n\t\teco_heat_installation as string,\n\t\tfeedback_call_approval as timestamp,\n\t\tthermostat_type as string,\n\t\twarm_water_method as string,\n\t\tsolar_id as string,\n\t\tsystem as string,\n\t\tdevice_id as string,\n\t\texhaust_id as string,\n\t\tcontroller_id as string,\n\t\tresidents as integer,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tproject_type as string,\n\t\tcurrent_montage as string,\n\t\tfuture_montage as string,\n\t\twarm_water_heating_concept as string,\n\t\tinternet_control_wished as boolean,\n\t\tinstallation_location as string,\n\t\tcurrent_consumption as string,\n\t\tinterest_in_free_text as string,\n\t\tplanned_investment as double,\n\t\ttimestamp_ext_lead_creation as timestamp,\n\t\tenergy_contract_exists as boolean,\n\t\tmodernization_state_free_text as string,\n\t\tcustomer_note as string,\n\t\twished_contact_method as string,\n\t\taccepted_agb as string,\n\t\thouse_type_detail as string,\n\t\theatpump_energy_source as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimConfiguration\nsource(output(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tsf_auto_number as string,\n\t\tsf_lead_id as string,\n\t\tsf_opportunity_id as string,\n\t\tinstaller_company_id as string,\n\t\topportunity_end_date as timestamp,\n\t\topportunity_lost_reason as string,\n\t\tdescription_for_stage_reason as string,\n\t\tclose_date as timestamp,\n\t\thigh_urgency as boolean,\n\t\tlead_platform as string,\n\t\tcontract_type as string,\n\t\tlead_source as string,\n\t\troute_to_market as string,\n\t\tweb_source as string,\n\t\taddress_billing as string,\n\t\taddress_construction as string,\n\t\taddress_contact as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\towner_type as string,\n\t\tsearch_field as string,\n\t\tbergner_and_bluma_id as string,\n\t\tdescription as string,\n\t\tinstaller_description as string,\n\t\tdes_classic_id as long,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tbrand_id as string,\n\t\tgas_connection as boolean,\n\t\tneed as string,\n\t\turgency as string,\n\t\tcurrent_status as string,\n\t\tcurrent_status_reason as string,\n\t\tsf_owner_id as string,\n\t\tcall_center_follow_up_date as timestamp,\n\t\tcall_center_follow_up_date_counter as integer,\n\t\texternal_partner_sales_object_id as string,\n\t\tpurchased_from_partner as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimObject\nsource(output(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tsf_auto_number as string,\n\t\tsf_lead_id as string,\n\t\tsf_opportunity_id as string,\n\t\tinstaller_company_id as string,\n\t\topportunity_end_date as timestamp,\n\t\topportunity_lost_reason as string,\n\t\tdescription_for_stage_reason as string,\n\t\tclose_date as timestamp,\n\t\thigh_urgency as boolean,\n\t\tlead_platform as string,\n\t\tcontract_type as string,\n\t\tlead_source as string,\n\t\troute_to_market as string,\n\t\tweb_source as string,\n\t\taddress_billing as string,\n\t\taddress_construction as string,\n\t\taddress_contact as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\towner_type as string,\n\t\tsearch_field as string,\n\t\tbergner_and_bluma_id as string,\n\t\tdescription as string,\n\t\tinstaller_description as string,\n\t\tdes_classic_id as long,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tbrand_id as string,\n\t\tgas_connection as boolean,\n\t\tneed as string,\n\t\turgency as string,\n\t\tcurrent_status as string,\n\t\tcurrent_status_reason as string,\n\t\tsf_owner_id as string,\n\t\tcall_center_follow_up_date as timestamp,\n\t\tcall_center_follow_up_date_counter as integer,\n\t\texternal_partner_sales_object_id as string,\n\t\tpurchased_from_partner as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimInstaller\nsource(output(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tsf_auto_number as string,\n\t\tsf_lead_id as string,\n\t\tsf_opportunity_id as string,\n\t\tinstaller_company_id as string,\n\t\topportunity_end_date as timestamp,\n\t\topportunity_lost_reason as string,\n\t\tdescription_for_stage_reason as string,\n\t\tclose_date as timestamp,\n\t\thigh_urgency as boolean,\n\t\tlead_platform as string,\n\t\tcontract_type as string,\n\t\tlead_source as string,\n\t\troute_to_market as string,\n\t\tweb_source as string,\n\t\taddress_billing as string,\n\t\taddress_construction as string,\n\t\taddress_contact as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\towner_type as string,\n\t\tsearch_field as string,\n\t\tbergner_and_bluma_id as string,\n\t\tdescription as string,\n\t\tinstaller_description as string,\n\t\tdes_classic_id as long,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tbrand_id as string,\n\t\tgas_connection as boolean,\n\t\tneed as string,\n\t\turgency as string,\n\t\tcurrent_status as string,\n\t\tcurrent_status_reason as string,\n\t\tsf_owner_id as string,\n\t\tcall_center_follow_up_date as timestamp,\n\t\tcall_center_follow_up_date_counter as integer,\n\t\texternal_partner_sales_object_id as string,\n\t\tpurchased_from_partner as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimSource\nsource(output(\n\t\tid as string,\n\t\ttype as string,\n\t\tstatus as string,\n\t\tsf_event_id as string,\n\t\tsales_object_id as string,\n\t\tcustomer_id as string,\n\t\tinstaller_id as string,\n\t\tappointment_date as timestamp,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\tdescription as string,\n\t\tlast_modified_by_service as string,\n\t\tcreated_by_service as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimAppointment\nsource(output(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tcountry_code as string,\n\t\tpostal_code as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> DimCustomerAddress\nsource(output(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tsf_auto_number as string,\n\t\tsf_lead_id as string,\n\t\tsf_opportunity_id as string,\n\t\tinstaller_company_id as string,\n\t\topportunity_end_date as timestamp,\n\t\topportunity_lost_reason as string,\n\t\tdescription_for_stage_reason as string,\n\t\tclose_date as timestamp,\n\t\thigh_urgency as boolean,\n\t\tlead_platform as string,\n\t\tcontract_type as string,\n\t\tlead_source as string,\n\t\troute_to_market as string,\n\t\tweb_source as string,\n\t\taddress_billing as string,\n\t\taddress_construction as string,\n\t\taddress_contact as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\towner_type as string,\n\t\tsearch_field as string,\n\t\tbergner_and_bluma_id as string,\n\t\tdescription as string,\n\t\tinstaller_description as string,\n\t\tdes_classic_id as long,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tbrand_id as string,\n\t\tgas_connection as boolean,\n\t\tneed as string,\n\t\turgency as string,\n\t\tcurrent_status as string,\n\t\tcurrent_status_reason as string,\n\t\tsf_owner_id as string,\n\t\tcall_center_follow_up_date as timestamp,\n\t\tcall_center_follow_up_date_counter as integer,\n\t\texternal_partner_sales_object_id as string,\n\t\tpurchased_from_partner as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> FactSale\nDimCustomer select(mapColumn(\n\t\tid_customer = id,\n\t\ttitle,\n\t\tlanguage,\n\t\tcustomer_type,\n\t\temail_optin,\n\t\temail_optin_proof,\n\t\tphone_optin,\n\t\tphone_optin_proof,\n\t\tsms_optin,\n\t\tsms_optin_proof,\n\t\tfax_optin,\n\t\tfax_optin_proof,\n\t\tsalutation,\n\t\tcreated_date\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nDimStatus select(mapColumn(\n\t\tid_status = id,\n\t\tstatus,\n\t\ttimestamp,\n\t\tcreated_date,\n\t\tsales_object_id,\n\t\treason,\n\t\tdescription,\n\t\treview_date\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select2\nDimBrand select(mapColumn(\n\t\tid_brand = id,\n\t\tsf_brand_id,\n\t\tcountry_code\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select3\nDimDate select(mapColumn(\n\t\tid_date = id,\n\t\topportunity_end_date,\n\t\tcreated_date,\n\t\tlast_modified_date,\n\t\tlast_modified_by_service\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select4\nDimSaleAddress select(mapColumn(\n\t\tid_address = id,\n\t\taddress_billing,\n\t\taddress_construction,\n\t\taddress_contact\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select5\nDimDetails select(mapColumn(\n\t\tid_details = sales_object_id,\n\t\tfollow_up_priority,\n\t\thandover_to_installer,\n\t\thas_offer,\n\t\thas_proposal,\n\t\tlocale,\n\t\torder_origin,\n\t\torigin,\n\t\tsubsidy_service_active,\n\t\telectricity_provider,\n\t\tenergy_provider,\n\t\tservice_ordered,\n\t\tsubsidy_conduction,\n\t\tcountry_code\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select6\nDimConfiguration select(mapColumn(\n\t\tid_configuration = sales_object_id,\n\t\tsource,\n\t\tenergy_type,\n\t\tobject_type,\n\t\tcurrent_energy_type,\n\t\tinstallation_location\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select7\nDimObject select(mapColumn(\n\t\tid_object = id,\n\t\tcontract_type,\n\t\troute_to_market,\n\t\towner_type,\n\t\tgas_connection,\n\t\turgency,\n\t\tcurrent_status,\n\t\tcurrent_status_reason,\n\t\texternal_partner_sales_object_id,\n\t\tpurchased_from_partner,\n\t\tcreated_by_service\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select8\nDimInstaller select(mapColumn(\n\t\tid_installer = installer_company_id\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select9\nDimSource select(mapColumn(\n\t\tid_source = id,\n\t\tlead_platform,\n\t\tlead_source,\n\t\tweb_source\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select10\nDimAppointment select(mapColumn(\n\t\tid_appointment = sales_object_id,\n\t\ttype,\n\t\tstatus,\n\t\tsf_event_id,\n\t\tcustomer_id,\n\t\tinstaller_id,\n\t\tappointment_date,\n\t\tcreated_date\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select11\nDimCustomerAddress select(mapColumn(\n\t\tid,\n\t\tcustomer_id,\n\t\tcountry_code,\n\t\tpostal_code,\n\t\tcreated_date\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select12\nFactSale select(mapColumn(\n\t\tid_object = id,\n\t\tid_configuration = id,\n\t\tid_customer = customer_id,\n\t\tid_address = id,\n\t\tid_date = id,\n\t\tid_brand = brand_id,\n\t\tid_status = id,\n\t\tid_appointment = id,\n\t\tid_source = id,\n\t\tid_installer = installer_company_id,\n\t\tid_details = id\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Select13\nSelect9 filter(id_installer!=\"null\") ~> Filter1"
+		}
+	}
+}
