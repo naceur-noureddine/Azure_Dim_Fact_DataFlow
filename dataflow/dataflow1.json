@@ -1,0 +1,42 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					},
+					"name": "publicsalesobjects"
+				},
+				{
+					"dataset": {
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					},
+					"name": "factsalesobjects"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Join1"
+				},
+				{
+					"name": "MergeAlterRow"
+				}
+			],
+			"script": "source(output(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tsf_auto_number as string,\n\t\tsf_lead_id as string,\n\t\tsf_opportunity_id as string,\n\t\tinstaller_company_id as string,\n\t\topportunity_end_date as timestamp,\n\t\topportunity_lost_reason as string,\n\t\tdescription_for_stage_reason as string,\n\t\tclose_date as timestamp,\n\t\thigh_urgency as boolean,\n\t\tlead_platform as string,\n\t\tcontract_type as string,\n\t\tlead_source as string,\n\t\troute_to_market as string,\n\t\tweb_source as string,\n\t\taddress_billing as string,\n\t\taddress_construction as string,\n\t\taddress_contact as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\towner_type as string,\n\t\tsearch_field as string,\n\t\tbergner_and_bluma_id as string,\n\t\tdescription as string,\n\t\tinstaller_description as string,\n\t\tdes_classic_id as long,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tbrand_id as string,\n\t\tgas_connection as boolean,\n\t\tneed as string,\n\t\turgency as string,\n\t\tcurrent_status as string,\n\t\tcurrent_status_reason as string,\n\t\tsf_owner_id as string,\n\t\tcall_center_follow_up_date as timestamp,\n\t\tcall_center_follow_up_date_counter as integer,\n\t\texternal_partner_sales_object_id as string,\n\t\tpurchased_from_partner as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> publicsalesobjects\nsource(output(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tsf_auto_number as string,\n\t\tsf_lead_id as string,\n\t\tsf_opportunity_id as string,\n\t\tinstaller_company_id as string,\n\t\topportunity_end_date as timestamp,\n\t\topportunity_lost_reason as string,\n\t\tdescription_for_stage_reason as string,\n\t\tclose_date as timestamp,\n\t\thigh_urgency as boolean,\n\t\tlead_platform as string,\n\t\tcontract_type as string,\n\t\tlead_source as string,\n\t\troute_to_market as string,\n\t\tweb_source as string,\n\t\taddress_billing as string,\n\t\taddress_construction as string,\n\t\taddress_contact as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\towner_type as string,\n\t\tsearch_field as string,\n\t\tbergner_and_bluma_id as string,\n\t\tdescription as string,\n\t\tinstaller_description as string,\n\t\tdes_classic_id as long,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tbrand_id as string,\n\t\tgas_connection as boolean,\n\t\tneed as string,\n\t\turgency as string,\n\t\tcurrent_status as string,\n\t\tcurrent_status_reason as string,\n\t\tsf_owner_id as string,\n\t\tcall_center_follow_up_date as timestamp,\n\t\tcall_center_follow_up_date_counter as integer,\n\t\texternal_partner_sales_object_id as string,\n\t\tpurchased_from_partner as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> factsalesobjects\npublicsalesobjects, factsalesobjects join(publicsalesobjects@id == factsalesobjects@id,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> Join1\nJoin1 alterRow(insertIf(isNull(factsalesobjects@id)),\n\tupdateIf(notEquals(publicsalesobjects@last_modified_date,factsalesobjects@last_modified_date))) ~> MergeAlterRow\nMergeAlterRow sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tid as string,\n\t\tcustomer_id as string,\n\t\tsf_auto_number as string,\n\t\tsf_lead_id as string,\n\t\tsf_opportunity_id as string,\n\t\tinstaller_company_id as string,\n\t\topportunity_end_date as timestamp,\n\t\topportunity_lost_reason as string,\n\t\tdescription_for_stage_reason as string,\n\t\tclose_date as timestamp,\n\t\thigh_urgency as boolean,\n\t\tlead_platform as string,\n\t\tcontract_type as string,\n\t\tlead_source as string,\n\t\troute_to_market as string,\n\t\tweb_source as string,\n\t\taddress_billing as string,\n\t\taddress_construction as string,\n\t\taddress_contact as string,\n\t\tcreated_date as timestamp,\n\t\tlast_modified_date as timestamp,\n\t\towner_type as string,\n\t\tsearch_field as string,\n\t\tbergner_and_bluma_id as string,\n\t\tdescription as string,\n\t\tinstaller_description as string,\n\t\tdes_classic_id as long,\n\t\tcreated_by_service as string,\n\t\tlast_modified_by_service as string,\n\t\tbrand_id as string,\n\t\tgas_connection as boolean,\n\t\tneed as string,\n\t\turgency as string,\n\t\tcurrent_status as string,\n\t\tcurrent_status_reason as string,\n\t\tsf_owner_id as string,\n\t\tcall_center_follow_up_date as timestamp,\n\t\tcall_center_follow_up_date_counter as integer,\n\t\texternal_partner_sales_object_id as string,\n\t\tpurchased_from_partner as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:true,\n\tupsertable:false,\n\tkeys:['id'],\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tcustomer_id = publicsalesobjects@customer_id,\n\t\teach(match(true()))\n\t)) ~> sink1"
+		}
+	}
+}

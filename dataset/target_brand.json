@@ -1,0 +1,39 @@
+{
+	"name": "target_brand",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Dev_dwh",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Target"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "uuid",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "sf_brand_id",
+				"type": "character varying",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "country_code",
+				"type": "character varying",
+				"precision": 0,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "public",
+			"table": "brand"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

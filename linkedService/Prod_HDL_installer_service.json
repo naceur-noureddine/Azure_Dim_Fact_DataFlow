@@ -1,0 +1,12 @@
+{
+	"name": "Prod_HDL_installer_service",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzurePostgreSql",
+		"typeProperties": {
+			"connectionString": "host=cdrn-hdl-production-germanywestcentral-psql.postgres.database.azure.com;port=5432;database=installer_service;uid=gellert;encryptionmethod=1;validateservercertificate=0",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDkwRENFMUZELTYwM0YtNDlCRS1CQjI2LTNEMTUyMUFGREE3NF9lZmE5ODhmNC02OTcxLTRhMmEtOTUyYS02NGRhZjIxNDEzZjIiDQp9"
+		}
+	}
+}

@@ -1,0 +1,1006 @@
+{
+	"name": "copy_facts",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy sales_objects",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 1000000,
+						"writeBatchTimeout": "00:30:00",
+						"writeMethod": "CopyCommand"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								},
+								"sink": {
+									"name": "id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								},
+								"sink": {
+									"name": "customer_id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								}
+							},
+							{
+								"source": {
+									"name": "sf_auto_number",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "sf_auto_number",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "sf_lead_id",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "sf_lead_id",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "sf_opportunity_id",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "sf_opportunity_id",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "installer_company_id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								},
+								"sink": {
+									"name": "installer_company_id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								}
+							},
+							{
+								"source": {
+									"name": "opportunity_end_date",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								},
+								"sink": {
+									"name": "opportunity_end_date",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "opportunity_lost_reason",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "opportunity_lost_reason",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "description_for_stage_reason",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "description_for_stage_reason",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "close_date",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								},
+								"sink": {
+									"name": "close_date",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "high_urgency",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								},
+								"sink": {
+									"name": "high_urgency",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "lead_platform",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "lead_platform",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "contract_type",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "contract_type",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "lead_source",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "lead_source",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "route_to_market",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "route_to_market",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "web_source",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "web_source",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "address_billing",
+									"type": "Guid",
+									"physicalType": "uuid"
+								},
+								"sink": {
+									"name": "address_billing",
+									"type": "Guid",
+									"physicalType": "uuid"
+								}
+							},
+							{
+								"source": {
+									"name": "address_construction",
+									"type": "Guid",
+									"physicalType": "uuid"
+								},
+								"sink": {
+									"name": "address_construction",
+									"type": "Guid",
+									"physicalType": "uuid"
+								}
+							},
+							{
+								"source": {
+									"name": "address_contact",
+									"type": "Guid",
+									"physicalType": "uuid"
+								},
+								"sink": {
+									"name": "address_contact",
+									"type": "Guid",
+									"physicalType": "uuid"
+								}
+							},
+							{
+								"source": {
+									"name": "created_date",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								},
+								"sink": {
+									"name": "created_date",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "last_modified_date",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								},
+								"sink": {
+									"name": "last_modified_date",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "owner_type",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "owner_type",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "search_field",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "search_field",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "bergner_and_bluma_id",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "bergner_and_bluma_id",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "description",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "description",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "installer_description",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "installer_description",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "des_classic_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "des_classic_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "created_by_service",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "created_by_service",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "last_modified_by_service",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "last_modified_by_service",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "brand_id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								},
+								"sink": {
+									"name": "brand_id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								}
+							},
+							{
+								"source": {
+									"name": "gas_connection",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								},
+								"sink": {
+									"name": "gas_connection",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "need",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "need",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "urgency",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "urgency",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "current_status",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "current_status",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "current_status_reason",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "current_status_reason",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "sf_owner_id",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "sf_owner_id",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "call_center_follow_up_date",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								},
+								"sink": {
+									"name": "call_center_follow_up_date",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "call_center_follow_up_date_counter",
+									"type": "Int32",
+									"physicalType": "integer"
+								},
+								"sink": {
+									"name": "call_center_follow_up_date_counter",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "external_partner_sales_object_id",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "external_partner_sales_object_id",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "purchased_from_partner",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "purchased_from_partner",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "public_sales_object",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "target_sales_object",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy sales_object_des_fields",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzurePostgreSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzurePostgreSQLSink",
+						"writeBatchSize": 1000000,
+						"writeBatchTimeout": "00:30:00",
+						"writeMethod": "CopyCommand"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "sales_object_id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								},
+								"sink": {
+									"name": "sales_object_id",
+									"type": "Guid",
+									"physicalType": "uuid"
+								}
+							},
+							{
+								"source": {
+									"name": "follow_up_priority",
+									"type": "Int32",
+									"physicalType": "integer"
+								},
+								"sink": {
+									"name": "follow_up_priority",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "handover_to_installer",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								},
+								"sink": {
+									"name": "handover_to_installer",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "has_offer",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								},
+								"sink": {
+									"name": "has_offer",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "has_proposal",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								},
+								"sink": {
+									"name": "has_proposal",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "has_signature",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								},
+								"sink": {
+									"name": "has_signature",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "locale",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "locale",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "order_origin",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "order_origin",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "subsidy_service_active",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								},
+								"sink": {
+									"name": "subsidy_service_active",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "warranty_active_from",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								},
+								"sink": {
+									"name": "warranty_active_from",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "bivalent_point",
+									"type": "Decimal",
+									"physicalType": "numeric"
+								},
+								"sink": {
+									"name": "bivalent_point",
+									"type": "Decimal",
+									"physicalType": "numeric"
+								}
+							},
+							{
+								"source": {
+									"name": "electricity_provider",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "electricity_provider",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "energy_provider",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "energy_provider",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "flow_temperature",
+									"type": "Decimal",
+									"physicalType": "numeric"
+								},
+								"sink": {
+									"name": "flow_temperature",
+									"type": "Decimal",
+									"physicalType": "numeric"
+								}
+							},
+							{
+								"source": {
+									"name": "heating_system_type_old_system",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "heating_system_type_old_system",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "hydraulic_check",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "hydraulic_check",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "installation_year_old_heating_system",
+									"type": "Int32",
+									"physicalType": "integer"
+								},
+								"sink": {
+									"name": "installation_year_old_heating_system",
+									"type": "Int32",
+									"physicalType": "integer"
+								}
+							},
+							{
+								"source": {
+									"name": "mainly_panel_heating",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								},
+								"sink": {
+									"name": "mainly_panel_heating",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "operating_mode",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "operating_mode",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "return_flow_temperature",
+									"type": "Decimal",
+									"physicalType": "numeric"
+								},
+								"sink": {
+									"name": "return_flow_temperature",
+									"type": "Decimal",
+									"physicalType": "numeric"
+								}
+							},
+							{
+								"source": {
+									"name": "service_ordered",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								},
+								"sink": {
+									"name": "service_ordered",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "subsidy_conduction",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "subsidy_conduction",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "additional_properties",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "additional_properties",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "call_approval",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								},
+								"sink": {
+									"name": "call_approval",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_dispense_right_of_withdrawal",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								},
+								"sink": {
+									"name": "customer_dispense_right_of_withdrawal",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "data_sharing_approval",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "data_sharing_approval",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "latest_installation_date",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								},
+								"sink": {
+									"name": "latest_installation_date",
+									"type": "DateTime",
+									"physicalType": "timestamp without time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "priority",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								},
+								"sink": {
+									"name": "priority",
+									"type": "Boolean",
+									"physicalType": "boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "solar_id",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "solar_id",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "system",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "system",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "visit_call_approval",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "visit_call_approval",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "country_code",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "country_code",
+									"type": "String",
+									"physicalType": "character varying"
+								}
+							},
+							{
+								"source": {
+									"name": "inspection_appointment",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								},
+								"sink": {
+									"name": "inspection_appointment",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								}
+							},
+							{
+								"source": {
+									"name": "installation_appointment",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								},
+								"sink": {
+									"name": "installation_appointment",
+									"type": "DateTime",
+									"physicalType": "timestamp with time zone"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "public_sales_object_des_fields",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "target_sales_object_des_fields",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-01-18T20:14:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

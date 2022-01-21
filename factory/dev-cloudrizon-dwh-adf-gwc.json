@@ -1,0 +1,9 @@
+{
+	"name": "dev-cloudrizon-dwh-adf-gwc",
+	"location": "germanywestcentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "034ad714-7ad0-4525-925b-87e22b519751",
+		"tenantId": "8419b362-9d18-4b9b-b61f-0630b2e579fd"
+	}
+}
